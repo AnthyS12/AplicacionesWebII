@@ -1,0 +1,14 @@
+version: "3"
+services:
+  api:
+    build: .
+    depends_on:     
+      - mongo
+    environment: 
+      - PORT=3000
+      - MONGO_URI=mongodb://mongo:27017/anthony
+      - APPLICATION_NAME=CUALQUIERNOMBRE    
+    ports: 
+      - "3000:3000"
+  mongo:
+    image: mongo
