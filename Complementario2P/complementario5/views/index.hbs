@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+    <br>
+    <a href="/usuario/nuevo">Nuevo</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Usuario</th>
+                    <th>Tipo usuario</th>
+                    <th>Password</th>
+                    <th colspan="2">Opciones</th>
+                </tr>
+            </thead>
+            {{#each usuarios}}
+                <tr>
+                    <td>{{ this.name }}</td>
+                    <td>{{ this.username }}</td>
+                    <td>{{ this.tipo_usuario }}</td>
+                    <td>{{ this.password }}</td>
+                    <td><a href="/usuario/modificar/{{this._id}}">Modificar</a></td>
+                    <td><a href="/usuario/eliminar/{{this._id}}">Eliminar</a></td>
+                </tr>
+            {{/each}}
+        </table>
+    </div>
+</div>
