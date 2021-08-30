@@ -1,0 +1,54 @@
+<div class="container h-50">
+
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+            
+            <!-- Position Column -->
+            <ng-container matColumnDef="cedula">
+                <th mat-header-cell *matHeaderCellDef> Cédula</th>
+                <td mat-cell *matCellDef="let element"> {{element.usuario.cedula}} </td>
+            </ng-container>
+            
+            <!-- Name Column -->
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element"> {{element.usuario.nombre}} </td>
+            </ng-container>
+            
+            <!-- Weight Column -->
+            <ng-container matColumnDef="correo">
+                <th mat-header-cell *matHeaderCellDef> Correo </th>
+                <td mat-cell *matCellDef="let element"> {{element.usuario.correo}} </td>
+            </ng-container>
+            
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="telefono">
+                <th mat-header-cell *matHeaderCellDef> Telefono </th>
+                <td mat-cell *matCellDef="let element"> {{element.usuario.telefono}} </td>
+            </ng-container>
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="habitacion">
+                <th mat-header-cell *matHeaderCellDef> Habitación </th>
+                <td mat-cell *matCellDef="let element"> {{element.habitacion.nombre}} </td>
+            </ng-container>
+            <ng-container matColumnDef="fecha_entrada">
+                <th mat-header-cell *matHeaderCellDef> Fechas de reservación </th>
+                <td mat-cell *matCellDef="let element"> {{element.fecha_entrada}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="accion">
+                <th mat-header-cell *matHeaderCellDef> Acción</th>
+                <td mat-cell *matCellDef="let element"> <button class="btn btn-danger btn-sm" (click)="deleteAlert(element._id)">Eliminar</button></td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator 
+        [length]="100"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page">
+</mat-paginator>
+</div>
+</div>

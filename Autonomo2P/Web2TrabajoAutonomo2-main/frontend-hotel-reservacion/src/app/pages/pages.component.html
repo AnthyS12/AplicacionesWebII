@@ -1,0 +1,49 @@
+
+
+<header class="main-header">
+    <div class="containerc container--flex">
+      <div class="main-header__container">
+        <!-- <img src="../assets/logopng2.png" style="height: 15%; width: 15%; margin: auto;" alt=""> -->
+        <h1 class="main-header__title mt-5" >Hotel <strong>SAN LUIS</strong></h1>
+        <span class="icon-menu" id="btn-menu"><i class="fas fa-bars"></i></span>
+        <nav class="main-nav" id="main-nav">
+          <ul class="menu">
+            <li class="menu__item"><a [routerLink]="['/inicio']" routerLinkActive="active" class="menu__link">RESERVAR</a></li>
+            <li *ngIf="token" class="menu__item"><a [routerLink]="['/reservaciones']" routerLinkActive="active" class="menu__link">VER RESERVACIONES</a></li>
+            <li *ngIf="token" class="menu__item"><a [routerLink]="['/habitacion']" routerLinkActive="active" class="menu__link">HABITACIONES</a></li>
+
+          </ul>
+        </nav>
+      </div>
+      <div class="main-header__container">
+      </div>
+      <div class="main-header__container">
+
+        <button style="background:white; border-color: white; cursor: pointer;"  class="main-header__link" (click)="cerrarSesion()"><i class="fas fa-user" ></i> {{token ? 'Cerrar sesión': 'Iniciar sesión'}} </button>
+      </div>
+    </div>
+  </header>
+
+
+
+
+  <router-outlet></router-outlet>
+
+
+
+  <footer class="main-footer">
+    <div class="footer__section">
+      <h2 class="footer__title">Acerca de</h2>
+      <p class="footer__txt">Contamos con habitacion comoda y económicas, disponibles para toda la familia</p>
+    </div>
+    <div class="footer__section">
+      <h2 class="footer__title">Dirección</h2>
+      <p class="footer__txt">Calle Galo plaza Av. Alajuela</p>
+      <h2 class="footer__title">Contactos</h2>
+      <p class="footer__txt">Telefono : +593 986 465 566</p>
+      <p class="footer__txt">Correo : hotel.sanluis@gmail.com
+      </p>
+    </div>
+
+    <p class="copy">© 2021 HOTEL SAN LUIS | TODOS LOS DERECHOS RESERVADOS</p>
+  </footer>

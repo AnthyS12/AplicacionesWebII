@@ -1,0 +1,94 @@
+<div class="container ">
+
+
+    <h1 class="text-center mt-3"> {{!action ? "Registro de habitación" : "Editar habitación" }}</h1>
+    <hr>
+    <div class="m-0 row justify-content-center align-items-center"  style="height: 500px;" *ngIf="cargaCompleta">
+      <img src="../../../assets/loader.svg" alt="" height="100px" width="100px">
+  </div>
+  <div class="row">
+
+    <form class="col-6 " #roomForm="ngForm" (ngSubmit)="onSubmit(roomForm)"  *ngIf="!cargaCompleta">
+      <h4 class="text-center">Formulario registro</h4>
+      <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" class="form-control" placeholder="Nombre habitación" name="nombre" #nombre="ngModel"
+          [(ngModel)]="room.nombre" required>
+        </div>
+        <div class="form-group">
+          <label for="detalle">Detalle</label>
+          <textarea name="detalle" class="form-control" cols="30" rows="7"  #detalle="ngModel"
+          [(ngModel)]="room.detalle" required></textarea>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="camas">Camas</label>
+              <input type="number" class="form-control" placeholder="Ej. 2" name="camas" #camas="ngModel"
+              [(ngModel)]="room.camas" required>
+            </div>
+            
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="banios">Baños</label>
+              <input type="number" class="form-control" placeholder="Ej. 1" name="banios" #banios="ngModel"
+              [(ngModel)]="room.banios" required>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="banios">Precio</label>
+              <input type="number" class="form-control" placeholder="Ej. 15.00" name="precio" #precio="ngModel"
+              [(ngModel)]="room.precio" required>
+                  </div>
+                </div>
+              </div>           
+              <div class="form-group">
+            <input type="file" class="form-control" accept=".png, .jpg" (change)="onUpload($event)" multiple required>
+          </div>
+          
+          <button type="submit" class="btn btn-info mb-5 float-right" [disabled]="roomForm.invalid" >Registrar</button>
+          <div class="clearfix"></div>
+        </form>
+        <div class="col-6" *ngIf="!cargaCompleta && room.imagen">
+          <h4 class="text-center">Lista de imagenes</h4>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Imagen</th>
+                <th scope="col">Acción</th>              
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let img of room.imagen">
+                <td><img src="{{img}}" alt="" height="100px" width="100px"></td>
+                <td><button class="btn btn-danger btn-sm mt-5" (click)="eliminar(img, room._id)">Eliminar</button>
+                </td>
+              </tr>
+             
+            </tbody>
+          </table>     
+        </div>
+
+        <!-- cuando se registre -->
+        <div class="col-6" *ngIf="!cargaCompleta && !room.imagen && arrayImg.length > 0">
+          <h4 class="text-center">Lista de imagenes</h4>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Imagen</th>
+                <th scope="col">Acción</th>              
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let img of arrayImg">
+                <td><img src="{{img}}" alt="" height="100px" width="100px"></td>
+                <!-- <td><button class="btn btn-danger btn-sm mt-5">Eliminar</button></td> -->
+              </tr>
+             
+            </tbody>
+          </table>     
+        </div>
+      </div>
+      </div>
